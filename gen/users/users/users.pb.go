@@ -255,7 +255,9 @@ func (x *UpdateUserRequest) GetEmail() string {
 
 type UserResponse struct {
 	state         protoimpl.MessageState `protogen:"open.v1"`
-	User          *User                  `protobuf:"bytes,1,opt,name=user,proto3" json:"user,omitempty"`
+	Id            uint64                 `protobuf:"varint,1,opt,name=id,proto3" json:"id,omitempty"`
+	Username      string                 `protobuf:"bytes,2,opt,name=username,proto3" json:"username,omitempty"`
+	Email         string                 `protobuf:"bytes,3,opt,name=email,proto3" json:"email,omitempty"`
 	unknownFields protoimpl.UnknownFields
 	sizeCache     protoimpl.SizeCache
 }
@@ -290,11 +292,25 @@ func (*UserResponse) Descriptor() ([]byte, []int) {
 	return file_users_users_proto_rawDescGZIP(), []int{4}
 }
 
-func (x *UserResponse) GetUser() *User {
+func (x *UserResponse) GetId() uint64 {
 	if x != nil {
-		return x.User
+		return x.Id
 	}
-	return nil
+	return 0
+}
+
+func (x *UserResponse) GetUsername() string {
+	if x != nil {
+		return x.Username
+	}
+	return ""
+}
+
+func (x *UserResponse) GetEmail() string {
+	if x != nil {
+		return x.Email
+	}
+	return ""
 }
 
 type DeleteUserRequest struct {
@@ -407,9 +423,11 @@ const file_users_users_proto_rawDesc = "" +
 	"\x05email\x18\x04 \x01(\tH\x02R\x05email\x88\x01\x01B\v\n" +
 	"\t_usernameB\v\n" +
 	"\t_passwordB\b\n" +
-	"\x06_email\":\n" +
-	"\fUserResponse\x12*\n" +
-	"\x04user\x18\x01 \x01(\v2\x16.users_service.v1.UserR\x04user\"#\n" +
+	"\x06_email\"P\n" +
+	"\fUserResponse\x12\x0e\n" +
+	"\x02id\x18\x01 \x01(\x04R\x02id\x12\x1a\n" +
+	"\busername\x18\x02 \x01(\tR\busername\x12\x14\n" +
+	"\x05email\x18\x03 \x01(\tR\x05email\"#\n" +
 	"\x11DeleteUserRequest\x12\x0e\n" +
 	"\x02id\x18\x01 \x01(\x04R\x02id\".\n" +
 	"\x12DeleteUserResponse\x12\x18\n" +
@@ -446,20 +464,19 @@ var file_users_users_proto_goTypes = []any{
 	(*DeleteUserResponse)(nil), // 6: users_service.v1.DeleteUserResponse
 }
 var file_users_users_proto_depIdxs = []int32{
-	0, // 0: users_service.v1.UserResponse.user:type_name -> users_service.v1.User
-	1, // 1: users_service.v1.Users.GetUser:input_type -> users_service.v1.GetUserRequest
-	2, // 2: users_service.v1.Users.CreateUser:input_type -> users_service.v1.CreateUserRequest
-	3, // 3: users_service.v1.Users.UpdateUser:input_type -> users_service.v1.UpdateUserRequest
-	5, // 4: users_service.v1.Users.DeleteUser:input_type -> users_service.v1.DeleteUserRequest
-	4, // 5: users_service.v1.Users.GetUser:output_type -> users_service.v1.UserResponse
-	4, // 6: users_service.v1.Users.CreateUser:output_type -> users_service.v1.UserResponse
-	4, // 7: users_service.v1.Users.UpdateUser:output_type -> users_service.v1.UserResponse
-	6, // 8: users_service.v1.Users.DeleteUser:output_type -> users_service.v1.DeleteUserResponse
-	5, // [5:9] is the sub-list for method output_type
-	1, // [1:5] is the sub-list for method input_type
-	1, // [1:1] is the sub-list for extension type_name
-	1, // [1:1] is the sub-list for extension extendee
-	0, // [0:1] is the sub-list for field type_name
+	1, // 0: users_service.v1.Users.GetUser:input_type -> users_service.v1.GetUserRequest
+	2, // 1: users_service.v1.Users.CreateUser:input_type -> users_service.v1.CreateUserRequest
+	3, // 2: users_service.v1.Users.UpdateUser:input_type -> users_service.v1.UpdateUserRequest
+	5, // 3: users_service.v1.Users.DeleteUser:input_type -> users_service.v1.DeleteUserRequest
+	4, // 4: users_service.v1.Users.GetUser:output_type -> users_service.v1.UserResponse
+	4, // 5: users_service.v1.Users.CreateUser:output_type -> users_service.v1.UserResponse
+	4, // 6: users_service.v1.Users.UpdateUser:output_type -> users_service.v1.UserResponse
+	6, // 7: users_service.v1.Users.DeleteUser:output_type -> users_service.v1.DeleteUserResponse
+	4, // [4:8] is the sub-list for method output_type
+	0, // [0:4] is the sub-list for method input_type
+	0, // [0:0] is the sub-list for extension type_name
+	0, // [0:0] is the sub-list for extension extendee
+	0, // [0:0] is the sub-list for field type_name
 }
 
 func init() { file_users_users_proto_init() }

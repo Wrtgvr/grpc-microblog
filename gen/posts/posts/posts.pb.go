@@ -4,7 +4,7 @@
 // 	protoc        v6.31.0--rc2
 // source: posts/posts.proto
 
-package posts
+package postsv1
 
 import (
 	protoreflect "google.golang.org/protobuf/reflect/protoreflect"
@@ -464,7 +464,7 @@ const file_posts_posts_proto_rawDesc = "" +
 	"\n" +
 	"CreatePost\x12#.posts_service.v1.CreatePostRequest\x1a$.posts_service.v1.CreatePostResponse\x12W\n" +
 	"\n" +
-	"DeletePost\x12#.posts_service.v1.DeletePostRequest\x1a$.posts_service.v1.DeletePostResponseB\x12Z\x10/gen/posts;postsb\x06proto3"
+	"DeletePost\x12#.posts_service.v1.DeletePostRequest\x1a$.posts_service.v1.DeletePostResponseB\x14Z\x12/gen/posts;postsv1b\x06proto3"
 
 var (
 	file_posts_posts_proto_rawDescOnce sync.Once

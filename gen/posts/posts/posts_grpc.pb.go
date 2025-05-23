@@ -4,7 +4,7 @@
 // - protoc             v6.31.0--rc2
 // source: posts/posts.proto
 
-package posts
+package postsv1
 
 import (
 	context "context"

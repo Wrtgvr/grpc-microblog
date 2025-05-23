@@ -1,0 +1,46 @@
+syntax = "proto3";
+package users_service.v1;
+
+option go_package = "/gen/users;users";
+
+service Users {
+  rpc GetUser(GetUserRequest) returns (UserResponse);
+  rpc CreateUser(CreateUserRequest) returns (UserResponse);
+  rpc UpdateUser(UpdateUserRequest) returns (UserResponse);
+  rpc DeleteUser(DeleteUserRequest) returns (DeleteUserResponse);
+}
+
+message User {
+  uint64 id = 1;
+  string username = 2;
+  string email = 3;
+}
+
+message GetUserRequest {
+  uint64 id = 1;
+}
+
+message CreateUserRequest {
+  string username = 1;
+  string password = 2;
+  string email = 3;
+}
+
+message UpdateUserRequest {
+  uint64 id = 1;
+  optional string username = 2;
+  optional string password = 3;
+  optional string email = 4;
+}
+
+message UserResponse {
+  User user = 1;
+}
+
+message DeleteUserRequest {
+  uint64 id = 1;
+}
+
+message DeleteUserResponse {
+  bool success = 1;
+}

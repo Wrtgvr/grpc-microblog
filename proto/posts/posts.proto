@@ -1,0 +1,48 @@
+syntax = "proto3";
+package posts_service.v1;
+
+option go_package = "/gen/posts;posts";
+
+service Posts {
+  rpc GetUserPosts(UserPostsRequest) returns (UserPostsResponse);
+  rpc GetPost(GetPostRequest) returns (PostResponse);
+  rpc CreatePost(CreatePostRequest) returns (CreatePostResponse);
+  rpc DeletePost(DeletePostRequest) returns (DeletePostResponse);
+}
+
+message Post {
+  uint64 id = 1;
+  uint64 user_id = 2;
+  string content = 3;
+}
+
+message PostResponse {
+  Post post = 1;
+}
+
+message UserPostsRequest {
+  uint64 user_id = 1;
+}
+
+message UserPostsResponse {
+  repeated Post posts = 1;
+}
+
+message GetPostRequest {
+  uint64 id = 1;
+}
+
+message CreatePostRequest {
+  uint64 user_id = 1;
+  string content = 2;
+}
+
+message CreatePostResponse {
+  Post post = 1;
+}
+
+message DeletePostRequest {
+  uint64 id = 1;
+}
+
+message DeletePostResponse {}

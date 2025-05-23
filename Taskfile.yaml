@@ -1,0 +1,27 @@
+version: "3"
+
+tasks:
+  gen-all:
+    desc: "Generating gRPC and protobuf code from all .proto files"
+    aliases: [gen]
+    deps:
+      - gen-posts
+      - gen-users
+  gen-posts:
+    desc: "Generating 'posts' gRPC and protobuf code"
+    aliases: [gen_p]
+    cmds:
+      - >
+        protoc
+        --proto_path=proto proto/posts/posts.proto
+        --go_out=gen/posts/ --go_opt=paths=source_relative
+        --go-grpc_out=gen/posts/ --go-grpc_opt=paths=source_relative
+  gen-users:
+    desc: "Generating 'users' gRPC and protobuf code"
+    aliases: [gen_u]
+    cmds:
+      - >
+        protoc
+        --proto_path=proto proto/users/users.proto
+        --go_out=gen/users/ --go_opt=paths=source_relative
+        --go-grpc_out=gen/users/ --go-grpc_opt=paths=source_relative

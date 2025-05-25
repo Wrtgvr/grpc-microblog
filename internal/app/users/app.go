@@ -28,15 +28,19 @@ func NewApp(port int) *App {
 
 func (a *App) MustRun() {
 	if err := a.Run(); err != nil {
-		panic(err)
+		panic(fmt.Sprintf("failed to run app: %v", err))
 	}
 }
 
 func (a *App) Run() error {
-	ln, err := net.Listen("tcp", fmt.Sprintf(":%d", a.port))
+	fmt.Printf("Starting server on port %d\n", a.port)
+
+	ln, err := net.Listen("tcp", fmt.Sprintf("localhost:%d", a.port))
 	if err != nil {
 		panic(err)
 	}
+
+	fmt.Printf("Server is listening on %s\n", ln.Addr().String())
 
 	if err := a.gRPCServer.Serve(ln); err != nil {
 		return err

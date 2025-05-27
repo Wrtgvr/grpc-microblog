@@ -11,26 +11,26 @@ type UserService interface {
 	DeleteUser(*usersv1.DeleteUserRequest) (*usersv1.DeleteUserResponse, error)
 }
 
-type defaultService struct {
+type defaultUserService struct {
 	usersv1.UnimplementedUsersServer
 }
 
-func NewDefaulService() *defaultService {
-	return &defaultService{}
+func NewPostgresUserService() *defaultUserService {
+	return &defaultUserService{}
 }
 
-func (s *defaultService) GetUser(*usersv1.GetUserRequest) (*usersv1.UserResponse, error) {
+func (s *defaultUserService) GetUser(*usersv1.GetUserRequest) (*usersv1.UserResponse, error) {
 	panic("not implemented")
 }
 
-func (s *defaultService) CreateUser(*usersv1.CreateUserRequest) (*usersv1.UserResponse, error) {
+func (s *defaultUserService) CreateUser(*usersv1.CreateUserRequest) (*usersv1.UserResponse, error) {
 	panic("not implemented")
 }
 
-func (s *defaultService) UpdateUser(*usersv1.UpdateUserRequest) (*usersv1.UserResponse, error) {
+func (s *defaultUserService) UpdateUser(*usersv1.UpdateUserRequest) (*usersv1.UserResponse, error) {
 	panic("not implemented")
 }
 
-func (s *defaultService) DeleteUser(*usersv1.DeleteUserRequest) (*usersv1.DeleteUserResponse, error) {
+func (s *defaultUserService) DeleteUser(*usersv1.DeleteUserRequest) (*usersv1.DeleteUserResponse, error) {
 	panic("not implemented")
 }
